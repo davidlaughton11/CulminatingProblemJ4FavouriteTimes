@@ -66,12 +66,15 @@ namespace CulminatingProblemJ4FavouriteTimes
             }
             else if (D > 719)
             {
+                int howManyTimes;
                 currentHours = 0;
                 currentMinutes = D % 60;
                 //No decimals for int
                 currentHours += D / 60;
+                howManyTimes = (currentHours - 12) / 12;
 
-                for (int i = 1; i < 32; i++)
+
+                for (int i = 1; i < 32 * howManyTimes; i++)
                 {
                     if (currentHours >= hourtimes[i - 1] && currentMinutes >= minutetimes[i - 1])
                     {
