@@ -1,0 +1,18 @@
+﻿<Window x:Class="CulminatingProblemJ4FavouriteTimes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CulminatingProblemJ4FavouriteTimes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <TextBlock TextWrapping="Wrap">Suppose that we start looking at the clock at noon (that is, when it reads 12:00) and watch the
+        clock for some number of minutes. How many instances are there such that the time displayed on
+        the clock has the property that the digits form an arithmetic sequence?        </TextBlock>
+        <TextBlock>Enter How Many Minutes:</TextBlock>
+        <TextBox x:Name="DInput"></TextBox>
+        <Button x:Name="Start" Click="Start_Click">Click to run</Button>
+        <Label x:Name="lblOutput"></Label>
+    </StackPanel>
+</Window>
