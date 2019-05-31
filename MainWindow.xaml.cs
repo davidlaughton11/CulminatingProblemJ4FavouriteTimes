@@ -71,7 +71,7 @@ namespace CulminatingProblemJ4FavouriteTimes
                 currentMinutes = D % 60;
                 //No decimals for int
                 currentHours += D / 60;
-                howManyTimes = (currentHours - 12) / 12;
+                howManyTimes = (currentHours) / 12;
 
 
                 for (int i = 1; i < 32 * howManyTimes; i++)
@@ -80,10 +80,12 @@ namespace CulminatingProblemJ4FavouriteTimes
                     {
                         if (currentMinutes < 10)
                         {
+                            i = i + (31 * howManyTimes);
                             lblOutput.Content = "Current time: " + currentHours + ":" + "0" + currentMinutes + " total: " + i;
                         }
                         else
                         {
+                            i = i + (31 * howManyTimes);
                             lblOutput.Content = "Current time: " + currentHours + ":" + currentMinutes + " total: " + i;
                         }
                     }
