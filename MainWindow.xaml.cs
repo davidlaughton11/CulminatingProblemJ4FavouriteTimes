@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*David Laughton
+ * June 3 2019
+ * what time it is 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,69 +33,64 @@ namespace CulminatingProblemJ4FavouriteTimes
         {
             int D;
             int.TryParse(DInput.Text, out D);
-            int total = 0;
-            int startHours = 1;
-            int startMinutes = 00;
             int currentHours;
             int currentMinutes;
             int[] hourtimes = {12,1,1,1,1,1,2,2,2,2,2,3,3,3,3,
                 4,4,4,4,5,5,5,6,6,6,7,7,8,8,9,11 };
             int[] minutetimes = { 34, 11, 23, 35, 47, 59, 10, 22, 34, 46,
                 58, 21, 33, 45, 57, 20, 32, 44, 56, 31, 43, 55, 30, 42, 54, 41, 53, 40, 52, 51, 11 };
-            if (D <= 60)
+           
+            int howManyTimes;
+            currentMinutes = D % 60;
+            //No decimals for int
+            currentHours = D / 60;
+            howManyTimes = currentHours / 12;
+            currentHours = currentHours - (12 * howManyTimes);
+            if (currentHours == 0 && currentMinutes < 34)
             {
-                lblOutput.Content = "1";
-            }
-            else if (D <= 719)
-            {
-                currentHours = 0;
-                currentMinutes = D % 60;
-                //No decimals for int
-                currentHours += D / 60;
-                
-                for (int i = 1; i < 32; i++)
+                if (currentMinutes < 10)
                 {
-                    if (currentHours >= hourtimes[i - 1] && currentMinutes >= minutetimes[i -1] )
-                    {
-                        if (currentMinutes < 10)
-                        {
-                            lblOutput.Content = "Current time: " + currentHours + ":" + "0" + currentMinutes + " total: " + i;
-                        }
-                        else
-                        {
-                            lblOutput.Content = "Current time: " + currentHours + ":" + currentMinutes + " total: " + i;
-                        }
-                    }
+                    lblOutput.Content = "Current time: " + "12" + ":" + "0" + currentMinutes + " total: " + (31 * howManyTimes);
+                }
+                else
+                {
+                    lblOutput.Content = "Current time: " + "12" + ":" + currentMinutes + " total: " + (31 * howManyTimes);
                 }
             }
-            else if (D > 719)
+            else if (currentHours == 0 && currentMinutes >= 34)
             {
-                int howManyTimes;
-                currentHours = 0;
-                currentMinutes = D % 60;
-                //No decimals for int
-                currentHours += D / 60;
-                howManyTimes = (currentHours) / 12;
-
-
-                for (int i = 1; i < 32 * howManyTimes; i++)
+                if (currentMinutes < 10)
+                {
+                    lblOutput.Content = "Current time: " + "12" + ":" + "0" + currentMinutes + " total: " + ((31 * howManyTimes) + 1);
+                }
+                else
+                {
+                    lblOutput.Content = "Current time: " + "12" + ":" + currentMinutes + " total: " + ((31 * howManyTimes) + 1);
+                }
+            }
+            else
+            {
+                for (int i = 1; i < 32; i++)
                 {
                     if (currentHours >= hourtimes[i - 1] && currentMinutes >= minutetimes[i - 1])
                     {
-                        if (currentMinutes < 10)
+                        i = i + (31 * howManyTimes);
+
+                        if (currentHours == 0)
                         {
-                            i = i + (31 * howManyTimes);
+                            currentHours = 12;
+                        }
+                        else if (currentMinutes < 10)
+                        {
                             lblOutput.Content = "Current time: " + currentHours + ":" + "0" + currentMinutes + " total: " + i;
                         }
                         else
                         {
-                            i = i + (31 * howManyTimes);
                             lblOutput.Content = "Current time: " + currentHours + ":" + currentMinutes + " total: " + i;
                         }
                     }
                 }
-
-            }
+            }            
         }
     }
 }
